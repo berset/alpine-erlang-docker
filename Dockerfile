@@ -1,7 +1,6 @@
 FROM alpine
 
-RUN echo "@testing http://dl-4.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
-    apk update && apk add erlang@testing
-ADD lib /usr/lib/erlang/lib
+# base DEPS for erlang (will be shipped with release)
+RUN apk update && apk add musl ncurses-libs zlib
 
 CMD ["/bin/sh"]
